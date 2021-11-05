@@ -1,12 +1,16 @@
-function insertionSort(array) {
-    for(let i = 1; i < array.length; i++) {
-    insert(array, i-1, array[i]); }
-    return(array);
-}
+const array = [21, 50, 44, 32, 67,23]
+function insertionSort(input){
+    let length = input.length;
+    for (let i = 1; i < length; i++) {
+        let key = input[i];
+        let j = i - 1;
+        while (j >= 0 && input[j] > key) {
+            input[j + 1] = input[j];
+            j = j - 1;
+        }
+        input[j + 1] = key;
+    }
+    return input;
+};
 
-function insert(array, j, key) { 
-    while((j > -1) && (key < array[j])) {
-    array[j+1] = array[j];
-    j--; }
-    array[j+1] = key; 
-}
+console.log(insertionSort(array)); //-->[ 21, 23, 32, 44, 50, 67 ]
